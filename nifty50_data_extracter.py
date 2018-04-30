@@ -80,6 +80,40 @@ def compile_data():
 
 		main_df.to_csv('Data/nifty50_joined_closes.csv')
 #----------------------------------------------------------------------------------------------------------
+#def visualize_data():
+
+#	df = pd.read_csv('sp500_joined_closes.csv')
+#	#df['AYI'].plot()
+#	#plt.show()
+#	df_corr = df.corr()
+#
+#	print(df_corr.head())
+#
+#	data = df_corr.values
+#	fig = plt.figure()
+#	ax = fig.add_subplot(1,1,1)
+#
+#	heatmap = ax.pcolor(data, cmap = plt.cm.RdYlGn)
+#	fig.colorbar(heatmap)
+#	ax.set_xticks(np.arange(data.shape[0]) + 0.5, minor =False)
+#	ax.set_yticks(np.arange(data.shape[1]) + 0.5, minor =False)
+#	ax.invert_yaxis()
+#	ax.xaxis.tick_top()
+#
+#	column_lables = df_corr.columns
+#	row_lables = df_corr.index
+#
+#	ax.set_xticklabels(column_lables)
+#	ax.set_yticklabels(row_lables)
+#
+#	plt.xticks(rotation = 90)
+#	heatmap.set_clim(-1, 1)
+#	plt.tight_layout()
+#	plt.show()
+#
+#
+#visualize_data()
+##----------------------------------------------------------------------------------------------------------
 if __name__ == '__main__':
 	#get_data_from_yahoo()
 	compile_data()

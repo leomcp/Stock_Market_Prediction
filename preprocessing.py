@@ -1,3 +1,5 @@
+#-------------------------------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------------------------------
 from collections import Counter
 import numpy as np
 import pandas as pd 
@@ -5,12 +7,12 @@ import pickle
 
 from sklearn import svm, cross_validation, neighbors
 from sklearn.ensemble import VotingClassifier, RandomForestClassifier 
-
-
+#-------------------------------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------------------------------
 def process_data_for_labels(ticker):
 
 	hm_days = 7
-	df = pd.read_csv("sp500_joined_closes.csv")
+	df = pd.read_csv("Data/nifty50_joined_closes.csv")
 	df.set_index('Date', inplace = True)
 	#print(df.head(5))
 	tickers = df.columns.values.tolist()
@@ -24,7 +26,7 @@ def process_data_for_labels(ticker):
 	return tickers, df
 
 #process_data_for_labels('AYI')
-
+#-------------------------------------------------------------------------------------------------------------
 def buy_sell_hold(*args):
 	cols = [c for c in args]
 	requirement = 0.029 
@@ -36,7 +38,7 @@ def buy_sell_hold(*args):
 			return -1
 
 	return 0
-
+#-------------------------------------------------------------------------------------------------------------
 def extract_featuresets(ticker):
 	tickers, df = process_data_for_labels(ticker)
 
@@ -73,8 +75,7 @@ def extract_featuresets(ticker):
     
 
 	return X, y , df 
-
-
+#-------------------------------------------------------------------------------------------------------------
 def do_ml(ticker):
 	X, y, df = extract_featuresets(ticker)
 
@@ -95,7 +96,8 @@ def do_ml(ticker):
 	print('Predicted spread: ', Counter(predictions))
 
 	return confidence
-
-do_ml('ACN')
+#-------------------------------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------------------------------
+do_ml('TCS')
 
 
